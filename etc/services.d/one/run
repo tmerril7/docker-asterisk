@@ -1,3 +1,3 @@
 #!/command/execlineb -P
-while true; do sleep 100; done
+echo "while true; do sleep 100; done" | sh -
 
