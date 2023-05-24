@@ -1,2 +1,2 @@
 FROM ubuntu:jammy-20230425
-s
+sd
