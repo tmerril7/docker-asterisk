@@ -3,8 +3,9 @@ WORKDIR /tmp
 ARG S6_OVERLAY_VERSION=3.1.5.0
 RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository universe && apt-get update
 RUN apt-get install -y xz-utils git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev
-RUN wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18.18.0.tar.gz && tar -xvzf asterisk-18-current.tar.gz
-WORKDIR /tmp/asterisk-18.18.0
+ARG ASTERISK_VERSION=18.18.0
+RUN wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-$(ASTERISK_VERSION).tar.gz && tar -xvzf asterisk-$(ASTERISK_VERSION).tar.gz
+WORKDIR /tmp/asterisk-$(ASTERISK_VERSION)
 RUN ./configure && make && make install
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
