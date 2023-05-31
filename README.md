@@ -12,7 +12,7 @@
    ```
 
 1. restart docker
-   ```shell script
+   ```shell
     systemctl reload docker
    ```
 1. create docker Network
