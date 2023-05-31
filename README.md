@@ -1,6 +1,6 @@
-Setup notes:
+# Setup notes:
 
-# enable ipv6 in docker
+## enable ipv6 in docker
 
 1. Edit `/etc/docker/daemon.json`
 
@@ -9,7 +9,11 @@ Setup notes:
  "ipv6": true,
  "fixed-cidr-v6": "200x:xxxx:1::/64"
 }
-create docker Network
+```
+
+1. create docker Network
+
 ```
 
 docker network create
+```
