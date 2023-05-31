@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends software-proper
 && apt-get install -y --no-install-recommends xz-utils git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev \
 && wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && tar -xvzf asterisk-${ASTERISK_VERSION}.tar.gz \
 && cd /tmp/asterisk-${ASTERISK_VERSION} \
-#&& ./configure && make && make install && make samples \
+&& ./configure && make && make install && make samples \
 && apt-get purge -y software-properties-common git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev \
 && apt-get autoremove -y
 
