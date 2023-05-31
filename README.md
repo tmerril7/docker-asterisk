@@ -13,10 +13,10 @@
 
 1. restart docker
    ```console
-   :/$ systemctl reload docker
+   systemctl reload docker
    ```
 1. create docker Network
 
    ```console
-   :/$ docker network create
+   docker network create
    ```
