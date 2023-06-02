@@ -15,8 +15,8 @@
    ```console
    systemctl reload docker
    ```
-1. create docker Network
+1. run asterisk
 
    ```console
-   docker network create
+   docker run --rm --name asterisk -d rep.tnstlab.com:31320/docker-asterisk:1
    ```
