@@ -3,7 +3,7 @@ WORKDIR /tmp
 ARG S6_OVERLAY_VERSION=3.1.5.0
 ARG ASTERISK_VERSION=18.18.0
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common && add-apt-repository universe && apt-get update \
-&& apt-get install -y --no-install-recommends xz-utils git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev \
+&& apt-get install -y --no-install-recommends xz-utils git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libcurl4-openssl-dev libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev \
 && wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && tar -xvzf asterisk-${ASTERISK_VERSION}.tar.gz \
 && cd /tmp/asterisk-${ASTERISK_VERSION} \
 && ./configure && make && make install && make samples && cp -r /etc/asterisk/ /tmp/samples/ \
