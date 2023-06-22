@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends software-proper
 && wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && tar -xvzf asterisk-${ASTERISK_VERSION}.tar.gz \
 && cd /tmp/asterisk-${ASTERISK_VERSION} \
 && ./configure && make && make install && make samples && cp -r /etc/asterisk/ /tmp/samples/ \
-&& apt-get purge -y software-properties-common git curl wget libnewt-dev libncurses5-dev subversion build-essential uuid-dev \
+&& apt-get purge -y software-properties-common libnewt-dev libncurses5-dev subversion build-essential uuid-dev \
 && apt-get autoremove -y
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
