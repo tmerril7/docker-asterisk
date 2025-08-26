@@ -1,1 +1,2 @@
-
+#!/command/execlineb -P
+exec /usr/sbin/postfix start-fg
