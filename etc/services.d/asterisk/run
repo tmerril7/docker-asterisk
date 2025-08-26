@@ -1,2 +1,2 @@
 #!/command/execlineb -P
-sh -c "echo 'script start'; while true; do sleep 7; done;"
+exec /usr/sbin/asterisk -f -p
