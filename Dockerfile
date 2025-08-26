@@ -18,4 +18,7 @@ RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz
 
 ADD /etc /etc
 RUN chmod 777 -R /etc/services.d
+ADD resolv.conf /var/spool/postfix/etc
+RUN chmod 777 /var/spool/postfix/etc
+
 ENTRYPOINT ["/init"]
