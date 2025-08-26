@@ -24,3 +24,4 @@
 
 1. main.cf (postfix) mounted at /etc/postfix/main.cf
 2. directory of asterisk config files mounted at /etc/asterisk/
+3. astdb.sqlite3 file mounted at /var/lib/asterisk/ (if database persistence is needed)
