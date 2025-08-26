@@ -1,7 +1,7 @@
-FROM ubuntu:jammy-20250126
+FROM ubuntu:jammy-20250730
 WORKDIR /tmp
 ARG S6_OVERLAY_VERSION=3.1.5.0
-ARG ASTERISK_VERSION=22.2.0
+ARG ASTERISK_VERSION=22.5.1
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common && add-apt-repository universe && apt-get update \
 && apt-get install -y --no-install-recommends xz-utils git curl wget libnewt-dev libssl-dev libncurses5-dev subversion libcurl4-openssl-dev libsqlite3-dev build-essential libjansson-dev libxml2-dev uuid-dev libedit-dev pkg-config \
 && wget --no-check-certificate https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && tar -xvzf asterisk-${ASTERISK_VERSION}.tar.gz \
