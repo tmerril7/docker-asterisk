@@ -1,3 +1,0 @@
-#!/command/execlineb -P
-sh -c "echo 'script start'; while true; do sleep 7; done;"
-
