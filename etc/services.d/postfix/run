@@ -1,2 +1,37 @@
-#!/command/execlineb -P
-exec /usr/sbin/postfix start-fg
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+set -Eeuo pipefail
+
+ 
+echo "[postfix] Building maps (if present): $TABLES"
+
+  f="/etc/postfix/generic"
+  if [[ -f "$f" ]]; then
+    echo "[postfix] postmap $f"
+    postmap "$f" || true
+  fi
+
+# Sanity check config before launching
+echo "[postfix] postfix check"
+postfix check
+
+
+# Graceful shutdown handler (s6 sends SIGTERM on stop)
+_term() {
+  echo "[postfix] stopping…"
+  postfix stop || true
+  # Also signal master directly if needed
+  [[ -n "${MASTER_PID:-}" ]] && kill -TERM "$MASTER_PID" 2>/dev/null || true
+}
+trap _term SIGTERM SIGINT
+
+# Start Postfix in the foreground via master(8) debug mode
+# (Equivalent to `postfix start-fg` but works everywhere.)
+echo "[postfix] starting master (foreground)"
+/usr/sbin/master -d &
+MASTER_PID=$!
+
+
+
+# Keep the service tied to the master process
+wait "$MASTER_PID"
