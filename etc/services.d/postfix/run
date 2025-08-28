@@ -2,8 +2,7 @@
 # shellcheck shell=bash
 set -Eeuo pipefail
 
- 
-echo "[postfix] Building maps (if present): $TABLES"
+
 
   f="/etc/postfix/generic"
   if [[ -f "$f" ]]; then
