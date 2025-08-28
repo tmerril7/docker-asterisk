@@ -27,7 +27,7 @@ trap _term SIGTERM SIGINT
 # Start Postfix in the foreground via master(8) debug mode
 # (Equivalent to `postfix start-fg` but works everywhere.)
 echo "[postfix] starting master (foreground)"
-/usr/sbin/master -d &
+/usr/lib/postfix/sbin/master -d &
 MASTER_PID=$!
 
 
